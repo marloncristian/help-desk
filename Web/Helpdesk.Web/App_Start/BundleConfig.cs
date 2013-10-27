@@ -38,6 +38,17 @@ namespace Helpdesk.Web
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap/css").Include("~/Content/bootstrap/*.css"));
+            bundles.Add(new ScriptBundle("~/Content/bootstrap/js").Include("~/Content/bootstrap/*.js"));
+
+            /*
+            var bundle = new StyleBundle("~/Content/bootstrap/css").Include("~/Content/bootstrap/*.less");
+            bundle.Transforms.Add(new CssMinify());
+            bundle.Transforms.Add(new CssTransformer());
+            bundle.Orderer = new NullOrderer();
+            bundles.Add(bundle);
+            */
         }
     }
 }

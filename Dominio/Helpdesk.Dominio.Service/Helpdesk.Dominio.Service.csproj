@@ -40,6 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\UsuarioService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helpdesk.Dominio.Core\Helpdesk.Dominio.Core.csproj">
+      <Project>{e4f2125a-d508-4e87-8580-cd68ff9e48fa}</Project>
+      <Name>Helpdesk.Dominio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpdesk.Dominio.Data\Helpdesk.Dominio.Data.csproj">
+      <Project>{e185c6cb-30c6-4ac5-81c4-91ae5096d3db}</Project>
+      <Name>Helpdesk.Dominio.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

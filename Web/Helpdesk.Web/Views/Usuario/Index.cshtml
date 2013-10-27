@@ -1,0 +1,49 @@
+﻿@model Helpdesk.Web.Models.UsuarioModel.UsuarioIndexModel
+
+@{
+    ViewBag.Title = "Cadastro de usuário";
+}
+
+@if (ViewBag.MensagemErro != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.MensagemErro
+    </div>
+}
+
+@if (ViewBag.MensagemSucesso != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.MensagemSucesso
+    </div>
+}
+
+<a class="btn btn-primary" href="@Url.Action("Update", "Usuario")" style="color : white">Adicionar Novo...</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Nome</th>
+            <th style="width: 155px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Usuarios)
+        {
+            <tr>
+                <td style="line-height : 38px">
+                    <span class="label label-danger">Aguardando</span>
+                    <span>@user.Login</span>
+                </td>
+                <td style="line-height : 38px">
+                    @user.Nome
+                </td>
+                <td style="line-height : 38px; width: 155px; white-space: nowrap">
+                    <a class="btn btn-primary" href="@Url.Action("Delete", "Usuario", new { codigo = user.Codigo })" style="color : white">Excluir</a>
+                    <a class="btn btn-default" href="@Url.Action("Update", "Usuario", new { codigo = user.Codigo })">Alterar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

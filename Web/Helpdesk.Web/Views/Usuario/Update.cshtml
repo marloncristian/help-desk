@@ -1,0 +1,50 @@
+﻿@model Helpdesk.Web.Models.UsuarioModel.UsuarioUpdateModel
+
+@if (ViewBag.MensagemErro != null)
+{    
+    <div class="alert alert-danger">
+        @ViewBag.MensagemErro
+    </div>
+}
+
+@if (ViewBag.MensagemSucesso != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.MensagemSucesso
+    </div>
+}
+
+@using (Html.BeginForm("Update", "Usuario", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.HiddenFor(o => o.Codigo)
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Nome</label>
+        <div class="col-lg-6">
+            @Html.TextBoxFor(o => o.Nome, new { @class = "form-control", placeholder = "Digite o nome do usuário" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Login</label>
+        <div class="col-lg-4">            
+            @Html.TextBoxFor(o => o.Login, new { @class = "form-control", placeholder = "Digite o login" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Senha</label>
+        <div class="col-lg-4">
+            @Html.PasswordFor(o => o.Senha, new { @class = "form-control", placeholder = "Digite a Senha" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Tipo</label>
+        <div class="col-lg-4">
+            @Html.DropDownListFor(o => o.Tipo, Model.TipoList, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-6 col-offset-2">
+            <button class="btn btn-primary">Salvar</button>
+            @Html.ActionLink("Cancelar", "SmtpIndex", "Settings", new { Area = "Company", @class = "btn btn-default" })
+        </div>
+    </div>
+}

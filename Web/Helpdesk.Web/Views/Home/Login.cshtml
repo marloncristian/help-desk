@@ -1,0 +1,48 @@
+﻿@model Helpdesk.Web.Models.UserModel
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@Helpdesk.Web.Properties.Resources.ProjectName</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/modernizr")
+
+        @Styles.Render("~/Content/bootstrap/css")
+        @Scripts.Render("~/Content/bootstrap/js")
+
+    </head>
+    <body style="background: #383e4b;">
+        
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post)) {
+        <div style="width : 300px; min-height : 400px; padding-left : 15px; padding-right : 15px; padding-top : 30px; background-color : white; border-radius: 5px; position : absolute; left : 50%; top: 50%; margin-left : -150px; margin-top : -200px">
+            <h4>Efetue Login</h4>
+            <div class="form-group">
+                @Html.TextBoxFor(o => o.Login, new { @class = "form-control", placeholder = "Digite seu usuário" })
+                @Html.ValidationMessageFor(o => o.Login)
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(o => o.Senha, new { @class = "form-control", placeholder = "Digite sua senha" })
+                @Html.ValidationMessageFor(o => o.Senha)
+            </div>
+            <div class="form-group" style="padding-bottom : 20px">
+                <input type="submit" data-loading-text="Loading..." class="btn btn-primary" style="width : 100%" value="Efetuar Login" />
+                @if (ViewBag.Message != null) {
+                    <div class="alert alert-danger" style="margin-top : 10px">
+                        @ViewBag.Message
+                    </div>
+                }
+            </div>
+
+            <div style="padding-bottom : 10px">
+                <h6><a href="#">Esqueci minha senha</a></h6>
+                <h6>Caso tenha dificuldades em acessar o sistema entre em contato com nosso suporte</h6>
+            </div>
+        </div>
+        }
+
+    </body>
+</html>
