@@ -28,12 +28,25 @@ namespace Helpdesk.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Update()
+        [Authenticate]
+        public ActionResult Update(int codigo = 0)
         {
-            return View(new UsuarioUpdateModel());
+            if (codigo == 0)
+                return View(new UsuarioUpdateModel());
+
+            var service = new UsuarioService();
+            var usuario = service.GetUsuario(codigo);
+            return View(new UsuarioUpdateModel()
+            {
+                Codigo = usuario.Codigo,
+                Login = usuario.Login,
+                Nome = usuario.Nome,
+                Tipo = usuario.Tipo.GetHashCode()
+            });
         }
 
         [HttpPost]
+        [Authenticate]
         public ActionResult Update(UsuarioUpdateModel model)
         {
             if (!ModelState.IsValid)
@@ -43,28 +56,30 @@ namespace Helpdesk.Web.Controllers
             }
 
             var service = new UsuarioService();
-
-            var obj = service.GetUsuario(model.Login);
-            if (obj != null)
+            if (model.Codigo == 0)
             {
-                ViewBag.MensagemErro = "Já existe um usuário associado a este login";
-                return View(model);
+                var obj = service.GetUsuario(model.Login);
+                if (obj != null)
+                {
+                    ViewBag.MensagemErro = "Já existe um usuário associado a este login";
+                    return View(model);
+                }
             }
 
-            var usuario = new Usuario()
-            {
-                Codigo = model.Codigo,
-                Nome = model.Nome,
-                Login = model.Login,
-                Senha = model.Senha,
-                Tipo = (UsuarioTipo)model.Tipo
-            };
+            var usuario = (model.Codigo != 0) 
+                ? service.GetUsuario(model.Codigo) 
+                : new Usuario();
+            usuario.Nome = model.Nome;
+            usuario.Login = model.Login;
+            usuario.Senha = model.Senha;
+            usuario.Tipo = (UsuarioTipo)model.Tipo;
             service.Save(usuario);
 
             ViewBag.MensagemSucesso = "Usuario salvo com sucesso";
             return View(model);
         }
 
+        [Authenticate]
         public ActionResult Delete(int codigo)
         {
             try

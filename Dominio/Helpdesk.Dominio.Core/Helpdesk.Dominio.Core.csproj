@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Chamado.cs" />
+    <Compile Include="Core\ChamadoStatus.cs" />
+    <Compile Include="Core\Solucao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Usuario.cs" />
     <Compile Include="Security\UsuarioTipo.cs" />

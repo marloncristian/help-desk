@@ -1,0 +1,32 @@
+﻿@model Helpdesk.Web.Models.ChamadoModels.ChamadoVisualizarModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 155px">Abertura</th>
+            <th style="width: 155px">Status</th>
+            <th>Assunto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var chamado in Model.Chamados)
+        {
+            <tr>
+                <td style="line-height : 38px">@chamado.Abertura</td>
+                <td style="line-height : 38px">@chamado.Status</td>
+                <td style="line-height : 38px; overflow : hidden">
+                    @chamado.Assunto
+                </td>
+                <td style="line-height : 38px; overflow : hidden; width : 100px">
+                    <a href="@Url.Action("Visualizar", "Chamado", new { codigo = chamado.Codigo })" class="btn btn-primary" style="color : white">Detalhes...</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).on("click", "[data-behavior='modal']", function (a) {
+        alert(this);
+    });
+</script>

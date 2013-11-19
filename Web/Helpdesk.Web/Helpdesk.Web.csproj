@@ -215,13 +215,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ChamadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestaoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Filters\AuthorizeAttribute.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChamadoModels\ChamadoIndexModel.cs" />
+    <Compile Include="Models\ChamadoModels\ChamadoModel.cs" />
+    <Compile Include="Models\ChamadoModels\ChamadoVisualizarModel.cs" />
+    <Compile Include="Models\ChamadoModels\SolucaoModel.cs" />
+    <Compile Include="Models\QuestaoModel\QuestaoIndexModel.cs" />
+    <Compile Include="Models\QuestaoModel\QuestaoRespostaModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UsuarioModel\UsuarioIndexModel.cs" />
     <Compile Include="Models\UsuarioModel\UsuarioModel.cs" />
@@ -366,6 +374,11 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Update.cshtml" />
+    <Content Include="Views\Questao\Index.cshtml" />
+    <Content Include="Views\Chamado\Index.cshtml" />
+    <Content Include="Views\Chamado\Abertos.cshtml" />
+    <Content Include="Views\Chamado\Pesquisar.cshtml" />
+    <Content Include="Views\Chamado\Visualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
