@@ -56,7 +56,7 @@ namespace Helpdesk.Web.Controllers
                 return View();
             }
 
-            if (!AuthContext.SignIn(obj.Codigo, obj.Nome))
+            if (!AuthContext.SignIn(obj.Codigo, obj.Nome, obj.Tipo))
                 RedirectToAction("LoginError");
 
             return RedirectToAction("Index");
